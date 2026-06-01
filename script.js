@@ -6,7 +6,7 @@ const scene = new THREE.Scene();
 // Cargamos una textura de 360 grados (equirrectangular)
 const textureLoader = new THREE.TextureLoader();
 // Lo ideal es usar una imagen panorámica de 360 grados (como un HDRI)
-const backgroundTexture = textureLoader.load('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop');
+const backgroundTexture = textureLoader.load('./bg.jpg');
 
 // Le decimos a Three.js que envuelva la escena con la imagen en 3D
 backgroundTexture.mapping = THREE.EquirectangularReflectionMapping;
@@ -32,20 +32,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Material
-const material = new THREE.MeshStandardMaterial({
-  color: 0x00ff00,
-  metalness: 0.5,
-  roughness: 0.5
-});
 
-// Plane
-const plane = new THREE.Mesh(
-  new THREE.PlaneGeometry(10, 10),
-  material
-);
-
-scene.add(plane);
 
 // Light
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
